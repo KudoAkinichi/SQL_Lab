@@ -168,9 +168,36 @@ CREATE TABLE Employees (
     Position VARCHAR(100) NOT NULL,
     BranchID INT,
     ContactNumber VARCHAR(15) NOT NULL,
-    Email VARCHAR(100) NOT NULL,
-    FOREIGN KEY (BranchID) REFERENCES Branches(BranchID)
+    Email VARCHAR(100) NOT NULL
 );
+
+ALTER TABLE Employees
+ADD COLUMN Salary DECIMAL(10, 2);
+
+UPDATE Employees
+SET Salary = 504000.00
+WHERE EmployeeID = 5;
+
+INSERT INTO Employees (EmployeeID, FirstName, LastName, Position, BranchID, ContactNumber, Email)
+VALUES (1, 'John', 'Doe', 'Manager', 101, '555-1234', 'john.doe@example.com');
+
+INSERT INTO Employees (EmployeeID, FirstName, LastName, Position, BranchID, ContactNumber, Email)
+VALUES (2, 'Jane', 'Smith', 'Sales Representative', 102, '555-5678', 'jane.smith@example.com');
+
+INSERT INTO Employees (EmployeeID, FirstName, LastName, Position, BranchID, ContactNumber, Email)
+VALUES (3, 'Bob', 'Johnson', 'Accountant', 103, '555-9876', 'bob.johnson@example.com');
+
+INSERT INTO Employees (EmployeeID, FirstName, LastName, Position, BranchID, ContactNumber, Email)
+VALUES (4, 'Alice', 'Williams', 'Customer Service', 101, '555-4321', 'alice.williams@example.com');
+
+INSERT INTO Employees (EmployeeID, FirstName, LastName, Position, BranchID, ContactNumber, Email)
+VALUES (5, 'Charlie', 'Brown', 'Technician', 104, '555-8765', 'charlie.brown@example.com');
+
+SELECT CONCAT(LastName, ', ', FirstName) AS employee_name, Salary AS employee_salary
+FROM Employees;
+
+
+
 
 CREATE TABLE Transactions (
     TransactionID INT PRIMARY KEY,
