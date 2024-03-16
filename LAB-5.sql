@@ -46,7 +46,25 @@ SELECT
     MIN(YEAR(CURDATE()) - YEAR(BirthDate)) AS LowestAge
 FROM STUDENT;
 
+
+ALTER TABLE EMPLOYEE
+ADD DependentCount INT;
+
+SET SQL_SAFE_UPDATES = 0;
+
+UPDATE EMPLOYEE
+SET DependentCount = FLOOR(RAND() * 5);  
+
+
 -- Q7:
+SELECT
+    EmployeeID,
+    Fname,
+    Lname,
+    DependentCount AS TotalDependents
+FROM EMPLOYEE
+WHERE DependentCount >= 2;
+
 
 
 
